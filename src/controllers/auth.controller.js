@@ -1,7 +1,7 @@
-const supabase = require("../../config/supabase");
-const bcrypt = require("bcrypt");
+import supabase from "../../config/supabase.js";
+import bcrypt from "bcrypt";
 
-const register = async (req, res) => {
+export const register = async (req, res) => {
     try {
         const { nombre, email, password, rol } = req.body;
 
@@ -59,6 +59,4 @@ const register = async (req, res) => {
     }
 };
 
-module.exports = {
-    register
-};
+

@@ -1,13 +1,10 @@
-const express = require("express");
-const app = express();
+import dotenv from 'dotenv';
+import app from './app.js';
 
-app.use(express.json());
-const authRoutes = require("./src/routes/auth.routes.js");
+dotenv.config();
 
-app.use("/auth", authRoutes);
+const PORT = process.env.PORT || 3000;
 
-const historyRoutes = require("./src/routes/history.routes.js");
-
-app.listen(3000, () => {
-    console.log("Servidor iniciado");
+app.listen(PORT, () => {
+    console.log(`🚀 Servidor iniciado en http://localhost:${PORT}`);
 });
