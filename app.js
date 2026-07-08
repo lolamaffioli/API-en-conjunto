@@ -1,9 +1,10 @@
 // app.js
 import express from 'express';
-import boardRoutes from './modules/boards/boards.routes.js';
-import listRoutes from './modules/lists/lists.routes.js';
-import { authMiddleware } from './middlewares/auth.middleware.js';
-import { errorHandler } from './middlewares/error.middleware.js';
+import boardRoutes from './modules/boards/routes.js';
+import listRoutes from './modules/lists/routes.js';
+import { authMiddleware } from './middlewares/middleware.js';
+import { errorHandler } from './middlewares/middleware.js';
+import cardRoutes from './modules/cards/routes.js';
 
 const app = express();
 
@@ -18,7 +19,10 @@ app.use(authMiddleware);
 app.use('/api/boards', boardRoutes);
 app.use('/api/lists', listRoutes);
 
-// 4. Middleware de manejo de errores (SIEMPRE va al final de todas las rutas)
+// 4. Rutas de las tarjetas
+app.use('/api/cards', cardRoutes);
+
+// 5. Middleware de manejo de errores (SIEMPRE va al final de todas las rutas)
 app.use(errorHandler);
 
 export default app;
